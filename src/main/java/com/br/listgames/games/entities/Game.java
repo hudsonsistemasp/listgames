@@ -8,9 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Lob;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 
 @Entity
 @AllArgsConstructor
@@ -18,21 +21,20 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Table(name = "tb_game")
 public class Game implements Serializable{
-	
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8521246996830218306L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_game" )
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private String title;
 	
 	@Column(name="game_year")
 	private Integer year;
+	
 	
 	private String genre;
 	
@@ -44,6 +46,7 @@ public class Game implements Serializable{
 	
 	private String shortDescription;
 	
+	@Lob
 	private String longDescription;
 	
 	
