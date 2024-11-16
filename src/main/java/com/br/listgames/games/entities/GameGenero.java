@@ -9,18 +9,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_GameList")
-public class GameList {
+@Table(name = "tb_game_genero")
+public class GameGenero {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	
-	public GameList() {
+	public GameGenero() {
 	}
 	
-	public GameList(Long id, String name) {
+	public GameGenero(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -54,7 +54,7 @@ public class GameList {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		GameList other = (GameList) obj;
+		GameGenero other = (GameGenero) obj;
 		return Objects.equals(id, other.id);
 	}
 	

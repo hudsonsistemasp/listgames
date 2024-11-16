@@ -7,8 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_RelacionamentoGameComGameList")
-public class RelacionamentoGameComGameList {
+@Table(name = "tb_Relacionamento_Game_Com_Game_Genero")
+public class RelacionamentoGameComGameGenero {
 /*
  * Como é um um relacionamento 1...N e N...1, muitos para muitos, preciso dessa classe 
  * para representar, no modelo relacional do banco de dados, uma tabela de associação(intermediadora)
@@ -25,7 +25,7 @@ public class RelacionamentoGameComGameList {
  */
 	@EmbeddedId
 	/*Como este objeto vai receber a união das das chaves, instanciar para não dar NullPointerException e ter acesso às chaves ID.*/
-	private RelacionamentoGameComGameListPK id = new RelacionamentoGameComGameListPK();
+	private RelacionamentoGameComGameGeneroPK id = new RelacionamentoGameComGameGeneroPK();
 	
 	
 /*No front, o usuário vai poder mudar a sequência de amostra do jogo na lista, arrastando com o mouse, como exemplo,
@@ -38,20 +38,20 @@ public class RelacionamentoGameComGameList {
  *temos que unificar as chaves para apontar no tipo do ID. Dai a necessidade de criar uma classe auxiliar para unificar as chaves;)*/
 	
 	
-	public RelacionamentoGameComGameList() {
+	public RelacionamentoGameComGameGenero() {
 	}
 	
-	public RelacionamentoGameComGameList(Game game, GameList gameList) {
+	public RelacionamentoGameComGameGenero(Game game, GameGenero gameList) {
 		this.id.setGame(game);
 		this.id.setGameList(gameList);
 		this.position = position;
 	}
 
-	public RelacionamentoGameComGameListPK getId() {
+	public RelacionamentoGameComGameGeneroPK getId() {
 		return id;
 	}
 
-	public void setId(RelacionamentoGameComGameListPK id) {
+	public void setId(RelacionamentoGameComGameGeneroPK id) {
 		this.id = id;
 	}
 
@@ -76,7 +76,7 @@ public class RelacionamentoGameComGameList {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RelacionamentoGameComGameList other = (RelacionamentoGameComGameList) obj;
+		RelacionamentoGameComGameGenero other = (RelacionamentoGameComGameGenero) obj;
 		return Objects.equals(id, other.id);
 	}
 	
