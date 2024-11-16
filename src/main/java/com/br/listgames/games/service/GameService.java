@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.br.listgames.games.dto.GameDTO;
+import com.br.listgames.games.dto.GameLargeDTO;
+import com.br.listgames.games.dto.GameSmallViewDTO;
 import com.br.listgames.games.entities.Game;
 import com.br.listgames.games.repository.GameRepository;
 
@@ -24,9 +26,22 @@ public class GameService {
 	@Autowired
 	private GameRepository gameRepository;
 	
-	public List<GameDTO> findAll(){
+	
+	//@Transactional: Garantir que o service seja transacional no banco de dados, ACID: Atômica, consistente, isolada e durável
+	@Transactional(readOnly = true)
+	public List<GameSmallViewDTO> findAll(){
 		List<Game> games = gameRepository.findAll();
-		List<GameDTO> dto = games.stream().map(dados -> new GameDTO(dados)).toList();
+		List<GameSmallViewDTO> dto = games.stream().map(dados -> new GameSmallViewDTO(dados)).toList();
 		return dto;
 	} 
+	
+	@Transactional(readOnly = true)
+	public GameLargeDTO findById(Long id) {
+		Game gameById = gameRepository.findById(id).get();
+		//Converter o objeto GAME acima em GameLargeDTO
+		GameLargeDTO gameLargeDto = new GameLargeDTO(gameById);
+		return gameLargeDto;
+	}
+	
+	
 }

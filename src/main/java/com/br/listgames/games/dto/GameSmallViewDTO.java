@@ -2,7 +2,7 @@ package com.br.listgames.games.dto;
 
 import com.br.listgames.games.entities.Game;
 
-public class GameDTO {
+public class GameSmallViewDTO {
 
 	private Long id;
 	private String title;
@@ -10,10 +10,10 @@ public class GameDTO {
 	private String imgUrl;
 	private String shortDescription;
 
-	public GameDTO() {
+	public GameSmallViewDTO() {
 	}
 	
-	public GameDTO(Game gameEntity) {
+	public GameSmallViewDTO(Game gameEntity) {
 		this.id = gameEntity.getId();
 		this.title = gameEntity.getTitle();
 		this.year = gameEntity.getYear();
