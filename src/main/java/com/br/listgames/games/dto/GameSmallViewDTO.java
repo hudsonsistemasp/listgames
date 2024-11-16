@@ -1,6 +1,7 @@
 package com.br.listgames.games.dto;
 
 import com.br.listgames.games.entities.Game;
+import com.br.listgames.games.projections.GameSmallProjections;
 
 public class GameSmallViewDTO {
 
@@ -19,6 +20,14 @@ public class GameSmallViewDTO {
 		this.year = gameEntity.getYear();
 		this.imgUrl = gameEntity.getImgUrl();
 		this.shortDescription = gameEntity.getShortDescription();
+	}
+	
+	public GameSmallViewDTO(GameSmallProjections projectionSql) {
+		this.id = projectionSql.getId();
+		this.title = projectionSql.getTitle();
+		this.year = projectionSql.getYear();
+		this.imgUrl = projectionSql.getImgUrl();
+		this.shortDescription = projectionSql.getShortDescription();
 	}
 	
 	public Long getId() {

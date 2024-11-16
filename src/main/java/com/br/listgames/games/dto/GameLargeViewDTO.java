@@ -4,7 +4,7 @@ import org.springframework.beans.BeanUtils;
 
 import com.br.listgames.games.entities.Game;
 
-public class GameLargeDTO {
+public class GameLargeViewDTO {
 	
 	private Long id;
 	private String title;
@@ -16,7 +16,7 @@ public class GameLargeDTO {
 	private String shortDescription;
 	private String longDescription;
 	
-	public GameLargeDTO() {
+	public GameLargeViewDTO() {
 		
 	}
 	
@@ -42,7 +42,7 @@ public class GameLargeDTO {
 	 * tem que ser iguais para ele preencher tudo automaticamente economizando sintaxe.
 	 * Mas esse BeanUtils necessita de ter GET e SET para todos atributos, o que não precisaria
 	 * com a 1° forma ou como foi feito no GameSmallDTO. */
-	public GameLargeDTO(Game game) {
+	public GameLargeViewDTO(Game game) {
 		BeanUtils.copyProperties(game, this);
 	}
 
