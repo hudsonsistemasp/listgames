@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.listgames.games.dto.GameGeneroDTO;
+import com.br.listgames.games.dto.GameGeneroListaGamesReposicionadaDTO;
 import com.br.listgames.games.dto.GameSmallViewDTO;
 import com.br.listgames.games.service.GameGeneroService;
 import com.br.listgames.games.service.GameService;
@@ -34,5 +37,14 @@ public class GameGeneroController {
 	public List<GameSmallViewDTO> findListGeneroById(@PathVariable Long generoId){
 		List<GameSmallViewDTO> gamesGenero = gameService.findListGeneroById(generoId);
 		return gamesGenero;
-	}	
+	}
+
+	@PostMapping(value = "/{generoId}/listagamesreposicionada")
+	public void updateIndexListaDeGenero(@PathVariable Long generoId, 
+			@RequestBody GameGeneroListaGamesReposicionadaDTO body){
+		
+		gameGeneroService.updateIndexListaDeGenero(generoId, body.getSourceIndex(), body.getDestinationIndex());
+		
+	}
+	
 }

@@ -23,5 +23,5 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 				""")
 	List<GameSmallProjections> searchListGeneroById(Long GeneroId);
 	/*Quando se usa uma nativeQuery, ou seja SQL, e não uma JPQL, o resultado dessa consulta tem que ser
-	 * uma interface, ao qual se chama PROJECTION, é o que está na list<gameSmallProjections>.*/
+	 * uma interface, ao qual se chama PROJECTION, é o que está na IGameSmallProjections.*/
 }

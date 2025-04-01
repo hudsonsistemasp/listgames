@@ -44,7 +44,6 @@ public class RelacionamentoGameComGameGenero {
 	public RelacionamentoGameComGameGenero(Game game, GameGenero gameList) {
 		this.id.setGame(game);
 		this.id.setGameList(gameList);
-		this.position = position;
 	}
 
 	public RelacionamentoGameComGameGeneroPK getId() {
